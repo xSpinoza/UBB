@@ -1,7 +1,7 @@
 import { Stripe } from 'stripe'
 import dotenv from 'dotenv'
 import Order from '../MongoDB/models/Order.js'
-import Menu from '../MongoDB/models/menu.js'
+import Menu from '../MongoDB/models/Menu.js'
 
 dotenv.config()
 

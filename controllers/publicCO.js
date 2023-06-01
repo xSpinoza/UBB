@@ -1,4 +1,4 @@
-import Menu from "../MongoDB/models/menu.js"
+import Menu from "../MongoDB/models/Menu.js"
 
 const menu = async (req, res) => {
     const {category} = req.params

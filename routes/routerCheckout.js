@@ -1,7 +1,7 @@
 import express, { json } from 'express'
 import { Stripe } from 'stripe'
 import dotenv from 'dotenv'
-import Menu from '../MongoDB/models/menu.js'
+import Menu from '../MongoDB/models/Menu.js'
 import {generateId} from '../helpers/index.js'
 
 dotenv.config()
