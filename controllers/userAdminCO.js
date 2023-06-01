@@ -45,8 +45,8 @@ const loginStore = async (req, res) => {
 
     try {
         if(!checkUser){
-            const error = new Error(`This user doesn't exists`)
-            return res.status(404).json({msg: error.message})
+            const error = new Error(`User not found`)
+            return res.status(403).json({msg: error.message})
         }
 
         // Auth the user
