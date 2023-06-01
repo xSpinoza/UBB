@@ -13,14 +13,15 @@ const login = async (req, res) => {
     const {user, password} = req.body
 
     const checkUser = await AdminUser.findOne({user})
-    if(!checkUser.superAdmin) return res.status(404).json({msg: 'User not allow'})
+
+    if(!checkUser){
+        const error = new Error(`User not found`)
+        return res.status(403).json({msg: error.message})
+    }
+
+    if(!checkUser.superAdmin) return res.status(403).json({msg: 'User not allow'})
 
     try {
-        if(!checkUser){
-            const error = new Error(`This user doesn't exists`)
-            return res.status(404).json({msg: error.message})
-        }
-
         // Auth the user
         if(await checkUser.checkPass(password)){
 
