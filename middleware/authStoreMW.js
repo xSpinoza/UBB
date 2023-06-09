@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import AdminUser from '../MongoDB/models/AdminUser.js';
+import jwt from 'jsonwebtoken'
+import AdminUser from '../MongoDB/models/AdminUser.js'
 
 const checkAuthStore = async (req, res, next) => {
   let token
@@ -11,20 +11,18 @@ const checkAuthStore = async (req, res, next) => {
       req.adminUser = await AdminUser.findById(decoded.id).select('-password')
       if(!req.adminUser) return res.status(401).json({ error: 'User not found' })
 
-    //   if(!req.adminUser.superAdmin) res.status(401).json({ error: 'User not allow' })
-
       return next();
     } catch (e) {
-      console.log(`Error: ${e}`);
+      console.log(`Error: ${e}`)
 
       const error = new Error(`Invalid Token`);
-      return res.status(403).json({ msg: error.message });
+      return res.status(403).json({ msg: error.message })
     }
   }
   
   if (!token) {
-    const error = new Error(`Invalid Token o doesn't exist`);
-    return res.status(403).json({ msg: error.message });
+    const error = new Error(`Invalid Token o doesn't exist`)
+    return res.status(403).json({ msg: error.message })
   }
 }
 

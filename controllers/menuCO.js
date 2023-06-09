@@ -152,8 +152,8 @@ const editP = async (req, res) => {
     }
 
   } catch (error) {
-    console.error('Error al subir la imagen a Imgur:', error);
-    res.status(500).json({ msg: 'Error al subir la imagen a Imgur' });
+    console.error('Error uploading image to Imgur:', error)
+    res.status(500).json({ msg: 'Error uploading image to Imgur'})
   }
 }
 
